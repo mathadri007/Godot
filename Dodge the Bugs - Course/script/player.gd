@@ -29,5 +29,17 @@ func _process(delta):
 		
 	anim.flip_h = true if velocity.x > 0 else false
 	
+	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+
+#Verificação da colliion do player com os Bugs
+func _on_body_entered(body):
+	hide()
+	hit.emit()
+	collision.set_deferred("disabled", true)
+
+func start_pos(pos):
+	position = pos
+	show()
+	collision.disabled = false

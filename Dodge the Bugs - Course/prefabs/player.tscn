@@ -77,3 +77,5 @@ autoplay = "idle"
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_0yqy3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
