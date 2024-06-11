@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbpc78ga883st"]
+
+[ext_resource type="Texture2D" uid="uid://cel513wglmtm" path="res://assets/blue_beetle.png" id="1_aroqw"]
+[ext_resource type="Script" path="res://script/enemy.gd" id="1_m7knd"]
+[ext_resource type="Texture2D" uid="uid://brhog1m1jtuq2" path="res://assets/red_beetle.png" id="2_1fexw"]
+[ext_resource type="Texture2D" uid="uid://8moul5k4lp4b" path="res://assets/yellow_beetle.png" id="3_k4ub3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo8ui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aroqw")
+}],
+"loop": true,
+"name": &"blue_bettle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1fexw")
+}],
+"loop": true,
+"name": &"red_bettle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k4ub3")
+}],
+"loop": true,
+"name": &"yellow_bettle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_msjgd"]
+radius = 21.0
+height = 48.0
+
+[node name="enemy" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_m7knd")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_bo8ui")
+animation = &"blue_bettle"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -1)
+shape = SubResource("CapsuleShape2D_msjgd")
+
+[node name="visible" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="visible" to="." method="_on_visible_screen_exited"]
