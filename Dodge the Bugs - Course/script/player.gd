@@ -43,3 +43,6 @@ func start_pos(pos):
 	position = pos
 	show()
 	collision.disabled = false
+	
+	
+	
