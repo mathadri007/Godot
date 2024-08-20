@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmwgrpjpype6o"]
+
+[ext_resource type="PackedScene" uid="uid://ddubtvbywh7e6" path="res://prefabs/player.tscn" id="1_8wmkf"]
+[ext_resource type="Script" path="res://script/main.gd" id="1_jg5r3"]
+[ext_resource type="PackedScene" uid="uid://cv60oei42vt3t" path="res://prefabs/enemy.tscn" id="2_oagft"]
+
+[sub_resource type="Curve2D" id="Curve2D_c76yg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, -8)
+}
+point_count = 6
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_jg5r3")
+bug_scene = ExtResource("2_oagft")
+
+[node name="player" parent="." instance=ExtResource("1_8wmkf")]
+position = Vector2(241, 306)
+script = null
+
+[node name="BugTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 360)
+
+[node name="BugPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_c76yg")
+
+[node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
+
+[connection signal="timeout" from="BugTimer" to="." method="_on_bug_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
