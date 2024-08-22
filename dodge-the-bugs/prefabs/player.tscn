@@ -62,8 +62,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vrbsj"]
-radius = 25.0
-height = 50.0
+radius = 28.0
+height = 56.0
 
 [node name="player" type="Area2D"]
 script = ExtResource("1_ldkf8")

@@ -27,7 +27,7 @@ sampling_rate = 44100.0
 packet_sequence = SubResource("OggPacketSequence_p5aad")
 loop = true
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" groups=["bugs"]]
 script = ExtResource("1_jg5r3")
 bug_scene = ExtResource("2_oagft")
 
@@ -42,6 +42,7 @@ stretch_mode = 1
 
 [node name="player" parent="." instance=ExtResource("1_8wmkf")]
 position = Vector2(241, 306)
+scale = Vector2(0.5, 0.5)
 script = null
 
 [node name="BugTimer" type="Timer" parent="."]
@@ -68,6 +69,7 @@ stream = ExtResource("7_7ymp3")
 stream = SubResource("AudioStreamOggVorbis_wlymx")
 volume_db = -15.0
 
+[connection signal="start_game" from="Hud" to="." method="new_game"]
 [connection signal="timeout" from="BugTimer" to="." method="_on_bug_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

@@ -12,7 +12,7 @@ animations = [{
 "texture": ExtResource("2_ino80")
 }],
 "loop": true,
-"name": &"matheus1_enemy",
+"name": &"blue_beetle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -20,7 +20,7 @@ animations = [{
 "texture": ExtResource("3_4c4k8")
 }],
 "loop": true,
-"name": &"matheus2_enemy",
+"name": &"red_beetle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -28,28 +28,30 @@ animations = [{
 "texture": ExtResource("4_yun1s")
 }],
 "loop": true,
-"name": &"matheus3_enemy",
+"name": &"yellow_beetle",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3xhi"]
-radius = 46.0
+radius = 54.0
 
 [node name="enemy" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_i6pis")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-55.5, 83.5)
-scale = Vector2(0.278, 0.166)
+position = Vector2(-2, 5.188)
+scale = Vector2(0.644, 0.5)
 sprite_frames = SubResource("SpriteFrames_sfu8y")
-animation = &"matheus3_enemy"
+animation = &"blue_beetle"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 0)
+position = Vector2(-10, 4)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_p3xhi")
 
 [node name="visible" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-10.5, 4.5)
+scale = Vector2(2.75, 2.65)
 
 [connection signal="screen_exited" from="visible" to="." method="_on_visible_screen_exited"]

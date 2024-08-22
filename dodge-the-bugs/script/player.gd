@@ -33,7 +33,7 @@ func _process(delta):
 
 #Verificação da colisão do Player com os bugs
 func _on_body_entered(body):
-	
+	hide()
 	hit.emit()
 	collision.set_deferred("disabled", true)
 	

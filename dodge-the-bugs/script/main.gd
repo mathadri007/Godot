@@ -7,8 +7,6 @@ func game_over():
 	$BugTimer.stop()
 	$ScoreTimer.stop()
 	$HUD.show_game_over()
-	$bgMusic.stop()
-	$gameOverSound.play()
 	
 func new_game():
 	$StartTimer.start()
@@ -17,7 +15,6 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready!")
 	get_tree().call_group("bugs", "queue_free")
-	$bgMusic.play()
 
 func _on_score_timer_timeout():
 	score += 1
@@ -26,11 +23,12 @@ func _on_score_timer_timeout():
 func _on_start_timer_timeout():
 	$BugTimer.start()
 	$ScoreTimer.start()
-	
+
 func _on_bug_timer_timeout():
 	var bug = bug_scene.instantiate()
 	var bug_location = $BugPath/BugPathLocation
 	bug_location.progress_ratio = randf()
+	
 	
 	var direction = bug_location.rotation + PI / 2
 	bug.position = bug_location.position
