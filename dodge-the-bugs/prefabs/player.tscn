@@ -56,22 +56,21 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_0fdv3")
 }],
-"loop": true,
+"loop": false,
 "name": &"move_up",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vrbsj"]
-radius = 28.0
-height = 56.0
+radius = 59.0
+height = 118.0
 
 [node name="player" type="Area2D"]
 script = ExtResource("1_ldkf8")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1ntog")
-animation = &"move_up"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
