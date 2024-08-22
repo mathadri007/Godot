@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbo22ocj2raw7"]
+[gd_scene load_steps=5 format=3 uid="uid://bbo22ocj2raw7"]
 
 [ext_resource type="FontFile" uid="uid://cwbt2ugsjq30h" path="res://font/Dihil.ttf" id="1_5kgjj"]
 [ext_resource type="Script" path="res://script/hud.gd" id="1_hs14f"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_pxnt7"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_8r7so"]
+events = [SubResource("InputEventAction_pxnt7")]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_hs14f")
@@ -35,7 +41,7 @@ offset_right = 234.0
 offset_bottom = 332.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.745098, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_5kgjj")
 theme_override_font_sizes/font_size = 64
 text = "Matheus"
@@ -58,6 +64,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_5kgjj")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_8r7so")
 text = "start"
 
 [node name="MessageTimer" type="Timer" parent="."]
@@ -65,3 +72,4 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="pressed" from="Control/MessageLabel/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

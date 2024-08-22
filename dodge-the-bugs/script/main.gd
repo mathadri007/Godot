@@ -3,23 +3,25 @@ extends Node2D
 @export var bug_scene : PackedScene
 var score
 
-
-func _ready():
-	new_game()
-
 func game_over():
 	$BugTimer.stop()
 	$ScoreTimer.stop()
+	$HUD.show_game_over()
+	$bgMusic.stop()
+	$gameOverSound.play()
 	
 func new_game():
 	$StartTimer.start()
 	$player.start_pos($StartPosition.position)
 	score = 0
-
-
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready!")
+	get_tree().call_group("bugs", "queue_free")
+	$bgMusic.play()
 
 func _on_score_timer_timeout():
 	score += 1
+	$HUD.update_score(score)
 
 func _on_start_timer_timeout():
 	$BugTimer.start()

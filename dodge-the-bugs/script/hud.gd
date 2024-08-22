@@ -7,7 +7,7 @@ signal start_game
 @onready var start_button = $Control/StartButton
 
 func show_menssage(text):
-	message_label.text
+	message_label.text = text
 	message_label.show()
 	message_timer.start()
 	
@@ -27,3 +27,6 @@ func update_score(score):
 func _on_start_button_pressed():
 	start_button.hide()
 	start_game.emit()
+	
+func _on_message_timer_timeout():
+	message_label.hide()
