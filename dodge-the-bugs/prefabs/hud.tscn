@@ -32,7 +32,7 @@ action = &"start_game"
 [sub_resource type="Shortcut" id="Shortcut_8r7so"]
 events = [SubResource("InputEventAction_pxnt7")]
 
-[node name="Hud" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hs14f")
 
 [node name="Control" type="Control" parent="."]
@@ -49,7 +49,7 @@ offset_right = 265.0
 offset_bottom = 125.0
 theme_override_fonts/font = ExtResource("1_5kgjj")
 theme_override_font_sizes/font_size = 64
-text = "o"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
